@@ -24,7 +24,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 /*  place this file in your ownCloud installation in the ocs folder  */
 
 //If you have troubles, read this line:
-$url = "https://".$_SERVER['SERVER_NAME']."/".$_GET['proxy_location']."/ocs/v1.php/apps/files_sharing/api/v1/shares"; 
+$url = "https://".$_SERVER['SERVER_NAME']."/ocs/v1.php/apps/files_sharing/api/v1/shares";
 
 
 /* This script works around an issue with ownCloud and a limitation in

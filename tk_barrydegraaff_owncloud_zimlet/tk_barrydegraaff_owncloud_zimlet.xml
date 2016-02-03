@@ -27,7 +27,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
         version="0.3.3"
         target="main compose-window view-window"
         label="ownCloud"
-        description="Attach from and save to ownCloud">
+        description="${msg.zimlet_description}">
     <include>tk_barrydegraaff_owncloud_zimlet.js</include>
     <include>davclient.js</include>
     <include>mime.js</include>
@@ -36,15 +36,17 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
       <dragSource type="ZmConv" />
 		<dragSource type="ZmMailMsg" />
       <contextMenu>
-         <menuItem icon="ownCloud-panelIcon" label="Preferences" id="preferences" />
-         <menuItem icon="ownCloud-help" label="Help" id="help" />
+         <menuItem icon="ownCloud-panelIcon" label="${msg.preferences}" id="preferences" />
+         <menuItem icon="ownCloud-help" label="${msg.help}" id="help" />
       </contextMenu>
    </zimletPanelItem>
    <handlerObject>tk_barrydegraaff_owncloud_zimlet_HandlerObject</handlerObject>
    <userProperties>
+      <property type="string" label="" name="owncloud_zimlet_url" rows="1"/>
       <property type="string" label="" name="owncloud_zimlet_username" rows="1"/>
       <property type="string" label="" name="owncloud_zimlet_password" rows="1"/>
       <property type="string" label="" name="owncloud_zimlet_default_folder" rows="1"/>
       <property type="string" label="" name="owncloud_zimlet_store_pass" rows="1"/>
    </userProperties>
 </zimlet>
+
