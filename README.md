@@ -40,8 +40,7 @@ The recommended method is to deploy using git.
 
 ### Configure your ownCloud Server
 
-Add the following lines in .htaccess of owncloud installation:
-NOTE: `example.com` must be the Zimbra domain where the owncloud will be accessed.
+Add the following lines in `.htaccess` of owncloud installation. `example.com` must be the Zimbra domain where the owncloud will be accessed.
 ```
 <IfModule mod_headers.c>
     <IfModule mod_env.c>
