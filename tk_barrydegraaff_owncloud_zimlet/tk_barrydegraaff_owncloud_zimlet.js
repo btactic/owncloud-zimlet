@@ -295,7 +295,7 @@ function(itemId) {
       this.displayDialog(1, ocZimlet.getMessage("preferences"), null);
       break;    
    case "help":
-      window.open("/service/zimlet/_dev/tk_barrydegraaff_owncloud_zimlet/help/index.html");
+      window.open("/service/zimlet/tk_barrydegraaff_owncloud_zimlet/help/index.html");
       break;
    }
 };
@@ -577,7 +577,7 @@ function(appName) {
    child.parentNode.removeChild(child);
 
    var toolbar = app.getToolbar(); // returns ZmToolBar
-   toolbar.setContent("<div style=\"padding:5px\"><button onclick=\"if(document.getElementById('ownCloudFrame').src.indexOf('"+tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_url']+"') < 0){this.innerHTML='"+ocZimlet.getMessage("help")+"'; document.getElementById('ownCloudFrame').src = '"+tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_url']+"'} else {this.innerHTML='"+ocZimlet.getMessage("back")+"'; document.getElementById('ownCloudFrame').src = '/service/zimlet/_dev/tk_barrydegraaff_owncloud_zimlet/help/index.html'}\">"+ocZimlet.getMessage("help")+"</button>&nbsp;&nbsp;<b>"+ocZimlet.getMessage("version")+": " + ownCloudZimlet.version + "</b></div>" );
+   toolbar.setContent("<div style=\"padding:5px\"><button onclick=\"if(document.getElementById('ownCloudFrame').src.indexOf('"+tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_url']+"') < 0){this.innerHTML='"+ocZimlet.getMessage("help")+"'; document.getElementById('ownCloudFrame').src = '"+tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_url']+"'} else {this.innerHTML='"+ocZimlet.getMessage("back")+"'; document.getElementById('ownCloudFrame').src = '/service/zimlet/tk_barrydegraaff_owncloud_zimlet/help/index.html'}\">"+ocZimlet.getMessage("help")+"</button>&nbsp;&nbsp;<b>"+ocZimlet.getMessage("version")+": " + ownCloudZimlet.version + "</b></div>" );
 };
 
 /**
@@ -817,7 +817,7 @@ function() {
          {
             if(document.getElementById(escape("/"+tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_dav_uri'].replace("/","")+share)+'-span').innerHTML.indexOf('/tk_barrydegraaff_owncloud_zimlet/exclam.png') < 1)
             {
-               document.getElementById(escape("/"+tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_dav_uri'].replace("/","")+share)+'-span').innerHTML += " <img class=\"ownCloudShareExists\"title=\""+ocZimlet.getMessage("ownCloudShareExists")+"\"style=\"vertical-align: bottom;\" src=\"/service/zimlet/_dev/tk_barrydegraaff_owncloud_zimlet/exclam.png\">";
+               document.getElementById(escape("/"+tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_dav_uri'].replace("/","")+share)+'-span').innerHTML += " <img class=\"ownCloudShareExists\"title=\""+ocZimlet.getMessage("ownCloudShareExists")+"\"style=\"vertical-align: bottom;\" src=\"/service/zimlet/tk_barrydegraaff_owncloud_zimlet/exclam.png\">";
             }
          }
       }
@@ -889,7 +889,7 @@ function(status, statusstr, content) {
          //Do not show files when we are selecting a default folder
          if(!document.getElementById('ownCloudZimletPref'))
          {
-            html += "<div id=\""+item['href']+"\" onclick=\"ownCloudZimlet.prototype.readSubFolder('"+item['href']+"')\" style=\"display: inline-block; ;width:99%; padding:2px;\"><img style=\"vertical-align: middle; margin-left:"+item['level']*16+"px\" src=\"/service/zimlet/_dev/tk_barrydegraaff_owncloud_zimlet/folder.png\"><span id=\""+item['href']+"-span\" style=\"vertical-align: middle;  display: inline-block;\">&nbsp;"+displayFolder+"</span></div>";               
+            html += "<div id=\""+item['href']+"\" onclick=\"ownCloudZimlet.prototype.readSubFolder('"+item['href']+"')\" style=\"display: inline-block; ;width:99%; padding:2px;\"><img style=\"vertical-align: middle; margin-left:"+item['level']*16+"px\" src=\"/service/zimlet/tk_barrydegraaff_owncloud_zimlet/folder.png\"><span id=\""+item['href']+"-span\" style=\"vertical-align: middle;  display: inline-block;\">&nbsp;"+displayFolder+"</span></div>";
          }
          else
          {               
@@ -901,7 +901,7 @@ function(status, statusstr, content) {
             {
               var selected = '';
             }
-            html += "<div id=\""+item['href']+"\" style=\"display: inline-block; ;width:99%; padding:2px;\"><input style=\"vertical-align: middle; margin-left:"+item['level']*16+"px\" type=\"radio\" " + selected  + "class=\"ownCloudSelect\" name=\"ownCloudZimlet\" id=\""+item['href']+"\" value=\""+item['href']+"\"><img onclick=\"ownCloudZimlet.prototype.readSubFolder('"+item['href']+"')\" style=\"vertical-align: middle;\" src=\"/service/zimlet/_dev/tk_barrydegraaff_owncloud_zimlet/folder.png\"><span onclick=\"ownCloudZimlet.prototype.readSubFolder('"+item['href']+"')\" id=\""+item['href']+"-span\" style=\"vertical-align: middle;  display: inline-block;\">&nbsp;"+displayFolder+"</span></div>";                              
+            html += "<div id=\""+item['href']+"\" style=\"display: inline-block; ;width:99%; padding:2px;\"><input style=\"vertical-align: middle; margin-left:"+item['level']*16+"px\" type=\"radio\" " + selected  + "class=\"ownCloudSelect\" name=\"ownCloudZimlet\" id=\""+item['href']+"\" value=\""+item['href']+"\"><img onclick=\"ownCloudZimlet.prototype.readSubFolder('"+item['href']+"')\" style=\"vertical-align: middle;\" src=\"/service/zimlet/tk_barrydegraaff_owncloud_zimlet/folder.png\"><span onclick=\"ownCloudZimlet.prototype.readSubFolder('"+item['href']+"')\" id=\""+item['href']+"-span\" style=\"vertical-align: middle;  display: inline-block;\">&nbsp;"+displayFolder+"</span></div>";
          }   
       }
    });
@@ -960,7 +960,7 @@ function(attachmentDlg)
    if(document.getElementById('shareType').value == 'attach')
    {
       var attBubble = document.getElementsByClassName("attBubbleContainer");
-      attBubble[0].style.backgroundImage = 'url(\'/service/zimlet/_dev/tk_barrydegraaff_owncloud_zimlet/progressround.gif\')';
+      attBubble[0].style.backgroundImage = 'url(\'/service/zimlet/tk_barrydegraaff_owncloud_zimlet/progressround.gif\')';
       attBubble[0].style.backgroundRepeat = "no-repeat";
       attBubble[0].style.backgroundPosition = "right";    
       
@@ -1027,7 +1027,7 @@ function(attachmentDlg)
    {        
       //Create share links
       var attBubble = document.getElementsByClassName("attBubbleContainer");
-      attBubble[0].style.backgroundImage = 'url(\'/service/zimlet/_dev/tk_barrydegraaff_owncloud_zimlet/progressround.gif\')';
+      attBubble[0].style.backgroundImage = 'url(\'/service/zimlet/tk_barrydegraaff_owncloud_zimlet/progressround.gif\')';
       attBubble[0].style.backgroundRepeat = "no-repeat";
       attBubble[0].style.backgroundPosition = "right"; 
       
