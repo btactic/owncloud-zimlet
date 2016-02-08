@@ -34,6 +34,7 @@ The recommended method is to deploy using git.
     # git clone https://github.com/btactic/owncloud-zimlet.git
     # cd owncloud-zimlet
     # chmod +rx build.sh
+    # ./build.sh
     # su - zimbra
     $ zmzimletctl deploy tk_barrydegraaff_owncloud_zimlet.zip
     $ zmcontrol restart
