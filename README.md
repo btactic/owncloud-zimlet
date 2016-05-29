@@ -70,16 +70,6 @@ You should now be able to see your ownCloud login page under the same domain as 
 If you get an ERROR 404 or you don't see ownCloud see 
 [https://github.com/Zimbra-Community/owncloud-zimlet/wiki/Install-and-enable-Zimbra-Proxy](https://github.com/Zimbra-Community/owncloud-zimlet/wiki/Install-and-enable-Zimbra-Proxy)
 
-###### Install using Yum
-For Zimbra systems running on RHEL/CentOS, owncloud-zimlet could be installed/upgraded/uninstalled using Yum from Zeta Alliance Copr's repository.
-
-* Enable the Copr repository (run once): download Copr repo file and save into /etc/yum.repos.d:
- * For EL6: `wget https://copr.fedorainfracloud.org/coprs/zetalliance/zimlets/repo/epel-6/zetalliance-zimlets-epel-6.repo -O /etc/yum.repos.d/zetalliance-zimlets-epel-6.repo`
- * For EL7: `wget https://copr.fedorainfracloud.org/coprs/zetalliance/zimlets/repo/epel-7/zetalliance-zimlets-epel-7.repo -O /etc/yum.repos.d/zetalliance-zimlets-epel-7.repo`
-* Install: `yum install owncloud-zimlet`
-* Update/upgrade: `yum update owncloud-zimlet`
-* Uninstall: `yum remove owncloud-zimlet`
-
 ### Configure your ownCloud Server
 
 If you want to enable link sharing add a php file to you ownCloud installation:
