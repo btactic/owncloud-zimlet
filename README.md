@@ -17,9 +17,9 @@ This Zimlet is designed for Zimbra version 8.6 and ownCloud versions 8 and 9.
 
 This Zimlet is not available for use in Zimbra Desktop.
 
-Bugs and feedback: https://github.com/Zimbra-Community/owncloud-zimlet/issues
+Bugs and feedback: https://forums.zimbra.org/
 
-Report security issues to barrydg@zetalliance.org (PGP fingerprint: 9e0e165f06b365ee1e47683e20f37303c20703f8)
+Contact for security issues ONLY: barrydg@zetalliance.org (PGP fingerprint: 9e0e165f06b365ee1e47683e20f37303c20703f8)
 
 Stay up-to-date: new releases are announced on the users mailing list: http://lists.zetalliance.org/mailman/listinfo/users_lists.zetalliance.org
 
