@@ -1,6 +1,6 @@
 Name:           owncloud-zimlet
 Version:        0.4.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Zimbra Owncloud integration zimlet
 
 Group:          Applications/Internet
@@ -59,5 +59,8 @@ fi
 
 
 %changelog
+* Mon Jun 13 2016 Truong Anh Tuan <tuanta@iwayvietnam.com> - 0.4.1-2
+- For retaining the zimlet configure after upgrade.
+
 * Sat May 28 2016 Truong Anh Tuan <tuanta@iwayvietnam.com> - 0.4.1-1
 - Initial release 0.4.1 from upstream.
