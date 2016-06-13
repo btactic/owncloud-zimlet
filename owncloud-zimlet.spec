@@ -31,7 +31,14 @@ cp -R tk_barrydegraaff_owncloud_zimlet/tk_barrydegraaff_owncloud_zimlet.zip $RPM
 
 
 %post
+if [ $1 -eq 2 ] ; then
+    su - zimbra -c "cp /opt/zimbra/zimlets-deployed/tk_barrydegraaff_owncloud_zimlet/config_template.xml /opt/zimbra/zimlets-deployed/owncloud-zimlet-config_template.xml"
+fi
 su - zimbra -c "zmzimletctl deploy /opt/zimbra/zimlets-extra/tk_barrydegraaff_owncloud_zimlet.zip"
+if [ $1 -eq 2 ] ; then
+    su - zimbra -c "mv -f /opt/zimbra/zimlets-deployed/owncloud-zimlet-config_template.xml /opt/zimbra/zimlets-deployed/tk_barrydegraaff_owncloud_zimlet/config_template.xml"
+    su - zimbra -c "zmzimletctl configure /opt/zimbra/zimlets-deployed/tk_barrydegraaff_owncloud_zimlet/config_template.xml"
+fi
 
 
 %posttrans
