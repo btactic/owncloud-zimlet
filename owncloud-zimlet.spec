@@ -1,6 +1,6 @@
 Name:           owncloud-zimlet
 Version:        0.4.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Zimbra Owncloud integration zimlet
 
 Group:          Applications/Internet
@@ -31,7 +31,14 @@ cp -R tk_barrydegraaff_owncloud_zimlet/tk_barrydegraaff_owncloud_zimlet.zip $RPM
 
 
 %post
+if [ $1 -eq 2 ] ; then
+    su - zimbra -c "cp /opt/zimbra/zimlets-deployed/tk_barrydegraaff_owncloud_zimlet/config_template.xml /opt/zimbra/zimlets-deployed/owncloud-zimlet-config_template.xml"
+fi
 su - zimbra -c "zmzimletctl deploy /opt/zimbra/zimlets-extra/tk_barrydegraaff_owncloud_zimlet.zip"
+if [ $1 -eq 2 ] ; then
+    su - zimbra -c "mv -f /opt/zimbra/zimlets-deployed/owncloud-zimlet-config_template.xml /opt/zimbra/zimlets-deployed/tk_barrydegraaff_owncloud_zimlet/config_template.xml"
+    su - zimbra -c "zmzimletctl configure /opt/zimbra/zimlets-deployed/tk_barrydegraaff_owncloud_zimlet/config_template.xml"
+fi
 
 
 %posttrans
@@ -52,5 +59,8 @@ fi
 
 
 %changelog
+* Mon Jun 13 2016 Truong Anh Tuan <tuanta@iwayvietnam.com> - 0.4.1-2
+- For retaining the zimlet configure after upgrade.
+
 * Sat May 28 2016 Truong Anh Tuan <tuanta@iwayvietnam.com> - 0.4.1-1
 - Initial release 0.4.1 from upstream.
