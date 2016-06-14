@@ -27,7 +27,7 @@ Stay up-to-date: new releases are announced on the users mailing list: http://li
 
 ### Install prerequisites
   - A running Zimbra server with Zimbra Proxy
-  - A running ownCloud server
+  - A running ownCloud server (Community Edition)
   
 If you are not running Zimbra proxy, you can either install it OR run a seperate nginx, apache or other proxy server.
 
