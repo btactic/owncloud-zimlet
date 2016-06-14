@@ -944,7 +944,7 @@ function(attachmentDlg)
             ownCloudSelect[0].checked = false;
             oCreq[ownCloudSelect[0].value] = new XMLHttpRequest();
             oCreq[ownCloudSelect[0].value].open('GET', ownCloudSelect[0].value, true);
-            oCreq[ownCloudSelect[0].value].setRequestHeader("Authorization", "Basic " + tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_username'] + ":" + tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']);
+            oCreq[ownCloudSelect[0].value].setRequestHeader("Authorization", "Basic " + string.encodeBase64(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_username'] + ":" + tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']));
             oCreq[ownCloudSelect[0].value].responseType = "blob";
             oCreq[ownCloudSelect[0].value].send('');
             
