@@ -23,11 +23,11 @@ DOCCONVERT_ZIMLET_PRODUCTION_PATH="/opt/zimbra/zimlets-deployed/tk_barrydegraaff
 DOCCONVERT_ZIMLET_DEV_PATH="/opt/zimbra/zimlets-deployed/_dev/tk_barrydegraaff_docconvert"
 OWNCLOUD_EXTENSION_PATH="/opt/zimbra/lib/ext/ownCloud"
 DOCCONVERT_EXTENSION_PATH="/opt/zimbra/lib/ext/DocConvert"
-OWNCLOUD_ZIMLET_CLONE_URL="https://github.com/Zimbra-Community/owncloud-zimlet"
-OWNCLOUD_ZIMLET_CLONE_BRANCH="soapServiceBarry"
-OCS_JAR_URL="https://github.com/Zimbra-Community/OCS/raw/master/extension/out/artifacts/OCS_jar/OCS.jar"
-PROPMIGR_JAR_URL="https://github.com/Zimbra-Community/propmigr/raw/master/out/artifacts/propmigr_jar/propmigr.jar"
-PROP2XML_JAR_URL="https://github.com/Zimbra-Community/prop2xml/raw/master/out/artifacts/prop2xml_jar/prop2xml.jar"
+OWNCLOUD_ZIMLET_CLONE_URL="https://github.com/btactic/owncloud-zimlet"
+OWNCLOUD_ZIMLET_CLONE_BRANCH="btactic-2018"
+OCS_JAR_URL="https://github.com/btactic/OCS/raw/master/extension/out/artifacts/OCS_jar/OCS.jar"
+PROPMIGR_JAR_URL="https://github.com/btactic/propmigr/raw/master/out/artifacts/propmigr_jar/propmigr.jar"
+PROP2XML_JAR_URL="https://github.com/btactic/prop2xml/raw/master/out/artifacts/prop2xml_jar/prop2xml.jar"
 OCS_EXTENSION_PATH="/opt/zimbra/lib/ext/OCS"
 OWNCLOUD_EXTENSION_JAR_FILES="\
 ant-1.7.0.jar \
@@ -50,7 +50,7 @@ urlrewritefilter-4.0.3.jar \
 zal.jar \
 commons-io-2.6.jar \
 "
-OWNCLOUD_DOC_URL="https\://barrydegraaff.github.io/owncloud/"
+OWNCLOUD_DOC_URL="https\://btactic.github.io/barry-doc/owncloud/"
 
 if [[ "$1" == '--auto' ]]
 then
