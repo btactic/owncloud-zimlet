@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (C) 2016-2017  Barry de Graaff
+# Copyright (C) 2016-2018  Barry de Graaff
 # 
 # Bugs and feedback: https://github.com/Zimbra-Community/owncloud-zimlet/issues
 # 
@@ -224,8 +224,8 @@ owncloud_zimlet_oc_folder=/nextcloud
 owncloud_zimlet_default_folder=
 owncloud_zimlet_ask_folder_each_time=false
 owncloud_zimlet_disable_rename_delete_new_folder=false
-owncloud_zimlet_extra_toolbar_button_title=Open Nextcloud tab
-owncloud_zimlet_extra_toolbar_button_url=/nextcloud
+owncloud_zimlet_extra_toolbar_button_title=Go to Nextcloud
+owncloud_zimlet_extra_toolbar_button_url=owncloud_zimlet_oc_folder
 owncloud_zimlet_app_title=WebDAV
 owncloud_zimlet_max_upload_size=104857600
 owncloud_zimlet_use_numbers=false

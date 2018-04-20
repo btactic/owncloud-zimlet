@@ -9,17 +9,21 @@ Demo video: https://www.youtube.com/watch?v=8pVMoXkNt8c
 
 User manual : https://barrydegraaff.github.io/owncloud/
 
-Integrate any WebDAV server in Zimbra Collaboration, currently tested with ownCloud 9.1, Nextcloud 12, Alfresco Enterprise - 5.2.0 and:
+Integrate any WebDAV server in Zimbra Collaboration, currently tested with ownCloud 9.1, Nextcloud 13, Alfresco Enterprise - 5.2.0 and:
 - Windows: Internet Explorer 11, Microsoft Edge, Google Chrome, Firefox
 - Linux: Google Chrome, Firefox
 
-Supported Zimbra versions 8.6, 8.7.11 and 8.8.5.
+Supported Zimbra versions 8.6, 8.7.11 and 8.8.8.
 
 Zimbra Desktop is not supported and does not work. Ubuntu 12.04 is not supported (https://github.com/Zimbra-Community/owncloud-zimlet/issues/117)
 
 Bugs and feedback: https://github.com/Zimbra-Community/owncloud-zimlet/issues
 
 Report security issues to info@barrydegraaff.tk (PGP fingerprint: 97f4694a1d9aedad012533db725ddd156d36a2d0)
+
+![Nextcloud Tab in Zimbra](https://raw.githubusercontent.com/Zimbra-Community/owncloud-zimlet/soapServiceBarry/docs/Nextcloud-tab.png "Nextcloud Tab in Zimbra")
+![Preferences Dialog](https://raw.githubusercontent.com/Zimbra-Community/owncloud-zimlet/soapServiceBarry/docs/Nextcloud-prefs.png "Preferences Dialog")
+![Attach from Nextcloud](https://raw.githubusercontent.com/Zimbra-Community/owncloud-zimlet/soapServiceBarry/docs/Nextcloud-attach.png "Attach from Nextcloud")
 
 ========================================================================
 
@@ -97,8 +101,8 @@ Please note that a preference set by the user has priority over a preference set
 | owncloud_zimlet_default_folder  |   | Default location where to upload files from Zimbra to WebDAV.  |   |
 | owncloud_zimlet_ask_folder_each_time  | false  | When true, ask the user each time to choose destination folder when uploading an attachment to WebDAV. The destination folder can be the default folder and folders in top level of the default folder. |   |
 | owncloud_zimlet_disable_rename_delete_new_folder  | false  | When true, rename folder, new folder and delete folder operations are hidden from the UI. To avoid bugs in ownCloud 8 with external storage.  |   |
-| owncloud_zimlet_extra_toolbar_button_title  | Open ownCloud tab  | If a value is set, show an additional button in the WebDAV tab to open in a new browser window the url set in owncloud_zimlet_extra_toolbar_button_url.  |   |
-| owncloud_zimlet_extra_toolbar_button_url  | /nextcloud  | See: owncloud_zimlet_extra_toolbar_button_title |   |
+| owncloud_zimlet_extra_toolbar_button_title  | Go to Nextcloud  | If a value is set, show an additional button in the WebDAV tab to open in a new browser window the url set in owncloud_zimlet_extra_toolbar_button_url.  |   |
+| owncloud_zimlet_extra_toolbar_button_url  | owncloud_zimlet_oc_folder  | URL to open when `Go to Nextcloud` is clicked. Instead of a URL you can set it to `owncloud_zimlet_server_name` it opens the URL set in owncloud_zimlet_server_name (may be set by user). When set to `owncloud_zimlet_oc_folder` it opens the URL set in owncloud_zimlet_server_name combined with owncloud_zimlet_oc_folder (maybe set by user).  See: owncloud_zimlet_extra_toolbar_button_title |   |
 | owncloud_zimlet_app_title  | WebDAV  | Change this if you want to rebrand WebDAV Client for your users. For example: ownCloud. |   |
 | owncloud_zimlet_max_upload_size  | 104857600  (100MB) | Maximum upload size for upload dialog MB * 1024 * 1024. The back-end has a hardcoded maximum of 1048576000 (1GB). |   |
 | owncloud_zimlet_use_numbers  | false | If set to true, a number will be used instead of filename when saving attachments. |   |
