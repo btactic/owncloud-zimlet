@@ -27,22 +27,23 @@ Report security issues to info@barrydegraaff.tk (PGP fingerprint: 97f4694a1d9aed
   - A running Zimbra server
   - A running WebDAV server (for example ownCloud/Nextcloud)
 
-### Installing
-#### Use the automated installer (Interactive mode):
+### Downloading the automated installer
 
     wget --no-cache https://raw.githubusercontent.com/Zimbra-Community/owncloud-zimlet/soapServiceBarry/webdav-client-installer.sh -O /tmp/webdav-client-installer.sh
     chmod +rx /tmp/webdav-client-installer.sh
+
+### Installing
+#### Use the automated installer (Interactive mode):
+
     /tmp/webdav-client-installer.sh 
     [zimbra@server zimbra]$ zmmailboxdctl restart
 
 #### Use the automated installer (Non interactive mode):
 
-    wget --no-cache https://raw.githubusercontent.com/Zimbra-Community/owncloud-zimlet/soapServiceBarry/webdav-client-installer.sh -O /tmp/webdav-client-installer.sh
-    chmod +rx /tmp/webdav-client-installer.sh
     /tmp/webdav-client-installer.sh --auto
     [zimbra@server zimbra]$ zmmailboxdctl restart
 
-Non interactive mode enables experimental Libreoffice document preview, automatically installs the Zimlet (in production mode) and force enables it in all COS'es. It also installs public link sharing.
+Non interactive mode does not enable experimental Libreoffice document preview, automatically installs the Zimlet (in production mode) and force enables it in all COS'es. It also installs public link sharing.
 
 ### Document preview
 Zimbra WebDAV Client uses OnlyOffice, LibreOffice and jsPDF to display previews of your documents. To enable LibreOffice preview, re-run the installer and choose Y when asked to install LibreOffice Document Preview.
@@ -127,23 +128,15 @@ Your clients **can connect to all dav servers by default**,  you can restrict th
 
 No service restart is needed after changing this file.
 
-### Un-installing
+### Un-installing (For both production and development mode)
 
-#### Development mode
-	rm -Rf /opt/zimbra/zimlets-deployed/_dev/tk_barrydegraaff_owncloud_zimlet/
-	rm -Rf /opt/zimbra/zimlets-deployed/_dev/tk_barrydegraaff_docconvert/
-	rm -Rf /opt/zimbra/lib/ext/ownCloud/
-	rm -Rf /opt/zimbra/lib/ext/OCS
-	rm -Rf /opt/zimbra/lib/ext/DocConvert/
-	[zimbra@server zimbra]$ zmmailboxdctl restart   
-
-#### Production mode
 	rm -Rf /opt/zimbra/zimlets-deployed/_dev/tk_barrydegraaff_owncloud_zimlet/
 	rm -Rf /opt/zimbra/zimlets-deployed/_dev/tk_barrydegraaff_docconvert/
 	rm -Rf /opt/zimbra/lib/ext/ownCloud/
 	rm -Rf /opt/zimbra/lib/ext/OCS
 	rm -Rf /opt/zimbra/lib/ext/DocConvert/
 	zmzimlet uninstall tk_barrydegraaff_owncloud_zimlet
+	# It's ok if zmzimlet uninstall fails in development mode
 	[zimbra@server zimbra]$ zmmailboxdctl restart
 ### Translations
 
