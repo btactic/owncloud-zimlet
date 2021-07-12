@@ -1,14 +1,14 @@
 all: zimlet
 
 zimlet: clean
-	zip -j -r tk_barrydegraaff_owncloud_zimlet.zip *.*
-	zip -u -r tk_barrydegraaff_owncloud_zimlet.zip \
+	zip -j -r cat_femprocomuns_owncloud_zimlet.zip *.*
+	zip -u -r cat_femprocomuns_owncloud_zimlet.zip \
 		help/*.* \
 		ViewerJS/* \
 		markdown/* \
 		newDocTemplate/* \
 
 clean:
-	rm -f tk_barrydegraaff_owncloud_zimlet.zip
+	rm -f cat_femprocomuns_owncloud_zimlet.zip
 
 .PHONY: all zimlet

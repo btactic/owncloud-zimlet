@@ -22,7 +22,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see http://www.gnu.org/licenses/.
 
 -->
-<zimlet name="tk_barrydegraaff_owncloud_zimlet"
+<zimlet name="cat_femprocomuns_owncloud_zimlet"
         version="1.4.1"
         target="main compose-window view-window"
         label="Oficina"
@@ -36,13 +36,13 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
     <include>OwnCloudListView.js</include>
     <include>OwnCloudTabView.js</include>
     <include>OwnCloudTreeController.js</include>
-    <include>tk_barrydegraaff_owncloud_zimlet.js</include>
+    <include>cat_femprocomuns_owncloud_zimlet.js</include>
     <include>mime.js</include>
     <include>ZmOwnCloudController.js</include>
-    <includeCSS>tk_barrydegraaff_owncloud_zimlet.css</includeCSS>
+    <includeCSS>cat_femprocomuns_owncloud_zimlet.css</includeCSS>
     <zimletPanelItem label="Nextcloud" icon="ownCloud-panelIcon">
    </zimletPanelItem>
-   <handlerObject>tk_barrydegraaff_owncloud_zimlet_HandlerObject</handlerObject>
+   <handlerObject>cat_femprocomuns_owncloud_zimlet_HandlerObject</handlerObject>
    <userProperties>
       <property type="string" label="" name="owncloud_zimlet_username" rows="1"/>
       <property type="string" label="" name="owncloud_zimlet_password" rows="1"/>

@@ -1,7 +1,7 @@
 function OwnCloudApp(zimletCtxt, app, settings, davConnector, ownCloudConnector) {
   this._zimletCtxt = zimletCtxt;
   this._app = app;
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
   OwnCloudApp.prototype.setDimensions();
   //see also OwnCloudApp.prototype._resize and `Implements dynamic sizing` below
   app.setContent('<table><tr><td id="WebDAVListView" style="vertical-align:top"></td><td id="WebDAVPreviewContainer" style="vertical-align:top"><iframe id="WebDAVPreview" src="'+zimletInstance.getConfig("owncloud_zimlet_welcome_url")+'" style="width:'+(zimletInstance.appWidth/2+zimletInstance.appWidthCorrection)+'px; height:'+  zimletInstance.appHeight +'px; border:0px"></td></tr></table>');
@@ -43,7 +43,7 @@ function OwnCloudApp(zimletCtxt, app, settings, davConnector, ownCloudConnector)
    else
    {     
       // Create toolbar buttons
-      var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+      var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
 
       //dummy button to catch the enter event and do nothing, dunno what the correct way is of not having an enter-key listener on zmtoolbar.
       //want it in the search text input.
@@ -173,10 +173,10 @@ function OwnCloudApp(zimletCtxt, app, settings, davConnector, ownCloudConnector)
 
 
 OwnCloudApp.prototype._newFileListener = function(fileType, title) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    if(!zimletInstance._appView._currentPath || zimletInstance._appView._currentPath=='/')
    {
-      zimletInstance._appView._currentPath = tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+'/';
+      zimletInstance._appView._currentPath = cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+'/';
    }   
   var newFileDialog = new DwtDialog({parent: appCtxt.getShell()}),
     folder = zimletInstance._appView._currentPath,
@@ -215,17 +215,17 @@ OwnCloudApp.prototype._newFileListener = function(fileType, title) {
  */
 OwnCloudApp.prototype._createNew =
   function(input, fileType, dialog) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    if (!input.getValue()) { return; }
    
    var filename = input.getValue().replace(/\.docx$|\.xlsx$|\.pptx$|\.txt$/i, "");
      
    filename = filename + '.' + fileType;
 
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    if(!zimletInstance._appView._currentPath || zimletInstance._appView._currentPath=='/')
    {
-      zimletInstance._appView._currentPath = tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+'/';
+      zimletInstance._appView._currentPath = cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+'/';
    }
        
    var url = zimletInstance.getResource("newDocTemplate/new."+fileType);  
@@ -246,7 +246,7 @@ OwnCloudApp.prototype._createNew =
       form = new FormData(),
       request = new XMLHttpRequest();
       form.append("uploadFile",xmlHttp.response, ownCloudZimlet.prototype.sanitizeFileName(filename));
-      form.append("password", tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']);
+      form.append("password", cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']);
       request.open(
       "POST",
       "/service/extension/dav_upload/?path="+ zimletInstance._appView._currentPath,
@@ -263,9 +263,9 @@ OwnCloudApp.prototype._createNew =
 //Implements dynamic sizing of the app, cause window.onresize is cluttered with built-in Zimbra stuff
 OwnCloudApp.prototype._resize =
 function() {
-var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
-     appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject._appView.setDimensions();
-     appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject._appView._listView.setSize((zimletInstance.appWidth/2-zimletInstance.appWidthCorrection)+"px",zimletInstance.appHeight+"px");
+var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
+     appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject._appView.setDimensions();
+     appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject._appView._listView.setSize((zimletInstance.appWidth/2-zimletInstance.appWidthCorrection)+"px",zimletInstance.appHeight+"px");
      try {
         document.getElementById('WebDAVPreview').style.width=(zimletInstance.appWidth/2+zimletInstance.appWidthCorrection)+'px';
         document.getElementById('WebDAVPreview').style.height=zimletInstance.appHeight+'px';
@@ -275,7 +275,7 @@ var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_ownclo
      if(zimletInstance._zimletContext.getConfig("enable_seafile_patches")=='true')
      {
          try {
-           if((zimletInstance._appView._currentPath == '/') || (zimletInstance._appView._currentPath == tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder']))
+           if((zimletInstance._appView._currentPath == '/') || (zimletInstance._appView._currentPath == cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder']))
            {
               appCtxt.getCurrentApp().getToolbar().getButton("NEW_FILE").setVisible(false);
               appCtxt.getCurrentApp().getToolbar().getButton("NEW_FOLDER")._menu.setItemVisible("oc_zimlet_new_docx",false);
@@ -299,7 +299,7 @@ var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_ownclo
 OwnCloudApp.TREE_ID = "OC_TREE_VIEW";
 
 OwnCloudApp.prototype._OnlyOfficeSaveDocument = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    try {
       zimletInstance.docEditor.destroyEditor();
       document.getElementById('WebDAVPreviewContainer').innerHTML = '<iframe id="WebDAVPreview" src="'+zimletInstance.getConfig("owncloud_zimlet_welcome_url")+'" style="width:'+(zimletInstance.appWidth/2+zimletInstance.appWidthCorrection)+'px; height:'+  zimletInstance.appHeight +'px; border:0px">';
@@ -311,7 +311,7 @@ OwnCloudApp.prototype._OnlyOfficeSaveDocument = function() {
 };
 
 OwnCloudApp.prototype.setDimensions = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    zimletInstance.appWidthCorrection = 200;
    zimletInstance.appHeight = (Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight )-110 );
    var width = (Math.max( document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth )-document.getElementById('zov__main_'+zimletInstance.ownCloudTab).style.width.replace('px','')-15 );
@@ -323,7 +323,7 @@ OwnCloudApp.prototype.setDimensions = function() {
 };
 
 OwnCloudApp.prototype.appActive = function(active) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    if(active)
    { 
         document.title = 'Zimbra: ' + zimletInstance._zimletContext.getConfig("owncloud_zimlet_app_title");
@@ -389,7 +389,7 @@ OwnCloudApp.prototype._restoreExpansion = function(treeItem, wasExpanded, callba
 };
 
 OwnCloudApp.prototype._renderTreePropFind = function(href, parent, callback, resources) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    zimletInstance._appView._listView._isWebDAVClientSearchResult = false;
    zimletInstance._appView._listView._webDAVClientSearchResult = null;
   var i,
@@ -474,12 +474,12 @@ OwnCloudApp.prototype._renderSearchResult = function(/** @type {DavResource[]} *
 };
 
 OwnCloudApp.prototype._sortSearchResult = function () {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    var sortedSearchResult = [];
    var sortedSearchResultKeys = [];
    for (var i = 0; i < zimletInstance._appView._listView._webDAVClientSearchResult.length; i++) {      
       var sortable = "";  
-      switch(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['sort_item']) {
+      switch(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['sort_item']) {
          case 'na':
             sortable = zimletInstance._appView._listView._webDAVClientSearchResult[i].getName().toLowerCase();            
          break;
@@ -506,7 +506,7 @@ OwnCloudApp.prototype._sortSearchResult = function () {
    } 
    sortedSearchResultKeys.sort();
 
-   if(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['sort_asc']==false)
+   if(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['sort_asc']==false)
    {
       sortedSearchResultKeys.reverse();
    }
@@ -553,7 +553,7 @@ OwnCloudApp.prototype._handleRootPropfind = function(resources) {
  * @private
  */
 OwnCloudApp.prototype._getFolderByHref = function(href, treeItems) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    
    //root level
    try {
@@ -597,15 +597,15 @@ OwnCloudApp.prototype._expandMe = function(treeItem) {
 };  
 
 OwnCloudApp.prototype.extraBtnLsnr = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    if(zimletInstance._zimletContext.getConfig("owncloud_zimlet_extra_toolbar_button_url")=='owncloud_zimlet_server_name')
    {
-      window.open(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_name']);
+      window.open(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_name']);
    }
    else if(zimletInstance._zimletContext.getConfig("owncloud_zimlet_extra_toolbar_button_url")=='owncloud_zimlet_oc_folder')
    {
       //this is the default since version 1.0.5
-      window.open(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_name']+tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder']);
+      window.open(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_name']+cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder']);
    }
    else if(zimletInstance._zimletContext.getConfig("owncloud_zimlet_extra_toolbar_button_url")=='seafile')
    {
@@ -618,16 +618,16 @@ OwnCloudApp.prototype.extraBtnLsnr = function() {
      soapDoc.getMethod().setAttribute("action", "loginRedirect");
 
      var path = zimletInstance._appView._currentPath;
-     path = path.replace(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path'],"");
-     path = path.replace(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder'],"");
+     path = path.replace(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path'],"");
+     path = path.replace(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder'],"");
       
      soapDoc.getMethod().setAttribute("path", path);
-     soapDoc.set('owncloud_zimlet_password', encodeURIComponent(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']));
-     soapDoc.set('owncloud_zimlet_username', encodeURIComponent(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_username']));
-     soapDoc.set('owncloud_zimlet_server_name', tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_name']);
-     soapDoc.set('owncloud_zimlet_server_port', tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_port']);
-     soapDoc.set('owncloud_zimlet_server_path', tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']);
-     soapDoc.set('owncloud_zimlet_oc_folder', tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder']);
+     soapDoc.set('owncloud_zimlet_password', encodeURIComponent(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']));
+     soapDoc.set('owncloud_zimlet_username', encodeURIComponent(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_username']));
+     soapDoc.set('owncloud_zimlet_server_name', cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_name']);
+     soapDoc.set('owncloud_zimlet_server_port', cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_port']);
+     soapDoc.set('owncloud_zimlet_server_path', cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']);
+     soapDoc.set('owncloud_zimlet_oc_folder', cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder']);
 
      appCtxt.getAppController().sendRequest(params);      
    }
@@ -639,12 +639,12 @@ OwnCloudApp.prototype.extraBtnLsnr = function() {
 };
 
 OwnCloudApp.prototype.goToSeaFile = function(result) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    window.open(result._data.response.loginRedirect);
 };
 
 OwnCloudApp.prototype.NewUploadToDavDialog = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
  
    zimletInstance._uploadDialog = new ZmDialog({
       title: ZmMsg.uploadDocs,
@@ -656,7 +656,7 @@ OwnCloudApp.prototype.NewUploadToDavDialog = function() {
    "<form accept-charset=\"utf-8\" method=\"POST\" id=\"ownCloudZimletUploadFiles\" enctype=\"multipart/form-data\">"
    + "<table role=\"presentation\" class=\"ZPropertySheet\" cellspacing=\"6\"><tbody><tr><td>" + ZmMsg.fileLabel + "</td><td>"
    + "<input type=\"file\" multiple=\"\" name=\"uploadFile\" size=\"30\"><input type=\"hidden\" name=\"password\" value=\""
-   + tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']+"\"></td><td colspan=\"3\">&nbsp;"
+   + cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']+"\"></td><td colspan=\"3\">&nbsp;"
    + "</td></tr></tbody></table></form>" +
    "</div>";
    
@@ -670,15 +670,15 @@ OwnCloudApp.prototype.NewUploadToDavDialog = function() {
 };
 
 OwnCloudApp.prototype.NewUploadToDavDialogCancelBtn = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    zimletInstance._uploadDialog.popdown();
 };
 
 OwnCloudApp.prototype.NewUploadToDavDialogOKBtn = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    if(!zimletInstance._appView._currentPath || zimletInstance._appView._currentPath=='/')
    {
-      zimletInstance._appView._currentPath = tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+'/';
+      zimletInstance._appView._currentPath = cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+'/';
    }   
 
    var formData = new FormData(document.getElementById("ownCloudZimletUploadFiles"));   
@@ -689,19 +689,19 @@ OwnCloudApp.prototype.NewUploadToDavDialogOKBtn = function() {
    var xhr = new XMLHttpRequest();
    xhr.open("POST", "/service/extension/dav_upload/?path=" + zimletInstance._appView._currentPath, true); 
    xhr.onload = function(event){ 
-      var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+      var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
       console.log("Success, server responded with: " + event.target.response);
       OwnCloudApp.prototype.refreshViewPropfind();
       zimletInstance._uploadDialog.popdown();
    }; 
    xhr.onerror = function(event){ 
-      var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+      var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
       console.log("onerror, server responded with: " + event.target.response);
       OwnCloudApp.prototype.refreshViewPropfind();
       zimletInstance._uploadDialog.popdown();
    }; 
    xhr.onabort = function(event){ 
-      var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+      var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
       console.log("onabort, server responded with: " + event.target.response);
       OwnCloudApp.prototype.refreshViewPropfind();
       zimletInstance._uploadDialog.popdown();
@@ -711,16 +711,16 @@ OwnCloudApp.prototype.NewUploadToDavDialogOKBtn = function() {
 };
 
 OwnCloudApp.prototype._uploadBtnLsnr = function(ev) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    if(!zimletInstance._appView._currentPath || zimletInstance._appView._currentPath=='/')
    {
-      zimletInstance._appView._currentPath = tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+'/';
+      zimletInstance._appView._currentPath = cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+'/';
    }
   OwnCloudApp.prototype.NewUploadToDavDialog();
 };
 
 OwnCloudApp.prototype.refreshViewPropfind = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    zimletInstance._appView._davConnector.propfind(
    zimletInstance._appView._currentPath,
    1,
@@ -733,7 +733,7 @@ OwnCloudApp.prototype.refreshViewPropfind = function() {
 };   
 
 OwnCloudApp.prototype._searchFieldListener = function(ev) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    if(document.getElementById('owncloud_zimlet_search').value.length < 3)
    {
       zimletInstance.status(ZmMsg.invalidSearch, ZmStatusView.LEVEL_CRITICAL);
@@ -751,10 +751,10 @@ OwnCloudApp.prototype._searchFieldListener = function(ev) {
 };
 
 OwnCloudApp.prototype._newFolderListener = function(ev) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
    if(!zimletInstance._appView._currentPath || zimletInstance._appView._currentPath=='/')
    {
-      zimletInstance._appView._currentPath = tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+'/';
+      zimletInstance._appView._currentPath = cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']+'/';
    }
    
   var newFolderDialog = new DwtDialog({parent: appCtxt.getShell()}),
@@ -790,7 +790,7 @@ OwnCloudApp.prototype._newFolderCallback = function(folder, input, dialog, ev) {
   dialog.getButton(DwtDialog.CANCEL_BUTTON).setEnabled(false);
 
   this._davConnector.mkcol(
-    ("/"+(folder + inputValue).replace(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path'],"")).replace('//','/'),
+    ("/"+(folder + inputValue).replace(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path'],"")).replace('//','/'),
     new AjxCallback(this, function(dialog, result) {
       dialog.popdown();
       this.refreshViewPropfind();

@@ -3,14 +3,14 @@
  * Folder picker inside a dwt dialog, it is a singleton
  *
  * @param	{DwtTabView} parent The tab view.
- * @param	{tk_barrydegraaff_owncloud_zimlet_HandlerObject} zimletCtxt The zimlet context.
+ * @param	{cat_femprocomuns_owncloud_zimlet_HandlerObject} zimletCtxt The zimlet context.
  * @param	{DavConnector} davConnector The DAV Connector.
  * @param	{OwnCloudConnector} ownCloudConnector The OwnCloud connector.
  *
 
 You can call it like this:
 
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    zimletInstance._folderPickerDialog = new ZmDialog({
       title: ZmMsg.chooseFolder,
       parent: zimletInstance.getShell(),
@@ -44,7 +44,7 @@ The result after selection can be found using:
 
  */
 function OwnCloudFolderPicker(parent, zimletCtxt, davConnector, ownCloudConnector, ocCommons) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
   this.zimlet = zimletCtxt;
 
   this._zimletCtxt = zimletCtxt;

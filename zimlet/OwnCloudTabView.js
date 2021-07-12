@@ -3,14 +3,14 @@
  * The attach mail tab view.
  *
  * @param	{DwtTabView} parent The tab view.
- * @param	{tk_barrydegraaff_owncloud_zimlet_HandlerObject} zimletCtxt The zimlet context.
+ * @param	{cat_femprocomuns_owncloud_zimlet_HandlerObject} zimletCtxt The zimlet context.
  * @param	{DavConnector} davConnector The DAV Connector.
  * @param	{OwnCloudConnector} ownCloudConnector The OwnCloud connector.
  *
  * @extends	DwtTabViewPage
  */
 function OwnCloudTabView(parent, zimletCtxt, davConnector, ownCloudConnector, ocCommons) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
   this.zimlet = zimletCtxt;
   var owncloud_zimlet_disable_ocs_public_link_shares = zimletInstance._zimletContext.getConfig("owncloud_zimlet_disable_ocs_public_link_shares");
   this._zimletCtxt = zimletCtxt;
@@ -65,7 +65,7 @@ function OwnCloudTabView(parent, zimletCtxt, davConnector, ownCloudConnector, oc
        parent: this,
      });
      this._sharePassword.setHtmlElementId('owncloudSharePassword');
-     if (tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_password'] == 'true')
+     if (cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_password'] == 'true')
      {
          this._sharePassword._inputField.placeholder = zimletInstance.getMessage('requiredPassword') != '' ?
           zimletInstance.getMessage('requiredPassword')
@@ -79,7 +79,7 @@ function OwnCloudTabView(parent, zimletCtxt, davConnector, ownCloudConnector, oc
      }
 
      var expiryDateLabel = '';
-     if (tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_date'] == 'true')
+     if (cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_date'] == 'true')
      {
          expiryDateLabel = zimletInstance.getMessage('requiredExpiryDate') != '' ?
           zimletInstance.getMessage('requiredExpiryDate')
@@ -103,9 +103,9 @@ function OwnCloudTabView(parent, zimletCtxt, davConnector, ownCloudConnector, oc
      this._shareExpiryDate._inputField.placeholder = zimletInstance.getMessage('datePlaceholder');
 
      var expiryDays = '';
-     if (tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_expiry_days'] != '')
+     if (cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_expiry_days'] != '')
      {
-         expiryDays = parseInt(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_expiry_days'],10);
+         expiryDays = parseInt(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_expiry_days'],10);
          if (expiryDays >= 0)
             this._shareExpiryDate._inputField.value=(new Date(Date.now() + expiryDays * 24 * 60 * 60 * 1000)).toISOString().slice(0,10);
      }
@@ -256,7 +256,7 @@ OwnCloudTabView.prototype._attachFiles =
     if (attachLinks)
     {
 
-      if (tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_password'] == 'true' && sharepassword == '')
+      if (cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_password'] == 'true' && sharepassword == '')
       {
         validate = false;
         this._sharePassword._inputField.style.border = '1px red solid';
@@ -266,7 +266,7 @@ OwnCloudTabView.prototype._attachFiles =
         this._sharePassword._inputField.style.border = '1px black solid';
       }
 
-      if (tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_date'] == 'true' && shareExpiryDate == '')
+      if (cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_date'] == 'true' && shareExpiryDate == '')
       {
         validate = false;
         this._shareExpiryDate._inputField.style.border = '1px red solid';
@@ -360,7 +360,7 @@ OwnCloudTabView.prototype._attachItemsAndSaveDraft =
  */
 OwnCloudTabView.prototype._appendSharedLink =
   function(url) {
-    var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+    var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
     if(this._sharePassword._inputField.value)
     {
        var passwordText = "("+ZmMsg.password.toLowerCase()+": "+this._sharePassword._inputField.value+")";

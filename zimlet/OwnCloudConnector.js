@@ -96,7 +96,7 @@
     errorCallback
   ) {
     publicUpload = (publicUpload === true || publicUpload === false)? publicUpload : void 0;
-    var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+    var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
     path = path.replace(zimletInstance.getUserProperty('owncloud_zimlet_server_path'),'');
     var soapDoc = AjxSoapDoc.create(HANDLER_NAME, URN);
     soapDoc.set('path', path);
@@ -185,12 +185,12 @@
       );
     }
     soapDoc.set('action', action);
-    soapDoc.set('owncloud_zimlet_password', encodeURIComponent(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']));
-    soapDoc.set('owncloud_zimlet_username', encodeURIComponent(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_username']));
-    soapDoc.set('owncloud_zimlet_server_name', tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_name']);
-    soapDoc.set('owncloud_zimlet_server_port', tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_port']);
-    soapDoc.set('owncloud_zimlet_server_path', tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']);
-    soapDoc.set('owncloud_zimlet_oc_folder', tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder']);
+    soapDoc.set('owncloud_zimlet_password', encodeURIComponent(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']));
+    soapDoc.set('owncloud_zimlet_username', encodeURIComponent(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_username']));
+    soapDoc.set('owncloud_zimlet_server_name', cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_name']);
+    soapDoc.set('owncloud_zimlet_server_port', cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_port']);
+    soapDoc.set('owncloud_zimlet_server_path', cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']);
+    soapDoc.set('owncloud_zimlet_oc_folder', cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder']);
     var params = {
       soapDoc: soapDoc,
       asyncMode: true,

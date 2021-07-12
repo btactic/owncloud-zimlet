@@ -94,15 +94,15 @@ OwnCloudListView.prototype._getHeaderList = function () {
 
 OwnCloudListView.prototype._sortColumn =
 function(columnItem, bSortAsc) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
-   tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['sort_item'] = columnItem._field;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
+   cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['sort_item'] = columnItem._field;
    if(bSortAsc == true)
    {
-      tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['sort_asc'] = false;  
+      cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['sort_asc'] = false;  
    }
    else
    {   
-      tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['sort_asc'] = true;  
+      cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['sort_asc'] = true;  
    }
 
    if(zimletInstance._appView._listView._isWebDAVClientSearchResult)
@@ -199,7 +199,7 @@ OwnCloudListView.prototype._getCellContents = function (htmlArr, idx, item, fiel
 };
 
 OwnCloudListView.prototype._resetOperations = function (parent, resource, resources) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
   var directoriesInvolved = false,
     operations = this._getActionMenuOps(),
     operationsEnabled = [],
@@ -240,7 +240,7 @@ OwnCloudListView.prototype._resetOperations = function (parent, resource, resour
 
   if (resources.length === 1) {     
     if (resource.isDirectory()) {
-      var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+      var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
       if(zimletInstance._zimletContext.getConfig("owncloud_zimlet_disable_rename_delete_new_folder")=='true')
       {
          parent.getMenuItem(ZmOperation.MOVE).setVisible(false); 
@@ -418,7 +418,7 @@ OwnCloudListView.prototype._getActionMenuOps = function() {
 };
 
 OwnCloudListView.prototype._sendFileListener = function(ev) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    var owncloud_zimlet_disable_ocs_public_link_shares = zimletInstance._zimletContext.getConfig("owncloud_zimlet_disable_ocs_public_link_shares");   
    this.sharePassView = new DwtComposite(appCtxt.getShell()); 
    this.sharePassView.setSize("450", "125"); 
@@ -431,7 +431,7 @@ OwnCloudListView.prototype._sendFileListener = function(ev) {
         : ZmMsg.shareWithPublic)
         +'</td></tr>';
       var passwordPlaceholder = '';
-      if (tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_password'] == 'true')
+      if (cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_password'] == 'true')
       {
           passwordPlaceholder = zimletInstance.getMessage('requiredPassword') != '' ?
             zimletInstance.getMessage('requiredPassword')
@@ -443,10 +443,10 @@ OwnCloudListView.prototype._sendFileListener = function(ev) {
             zimletInstance.getMessage('optionalPassword')
             : (ZmMsg.optionalInvitees).toLowerCase() + ' ' + (ZmMsg.password).toLowerCase();
       }
-      html += '<tr><td></td><td><input placeholder="'+passwordPlaceholder+'" id="tk_barrydegraaff_owncloud_zimlet-sharedLinkPass" type="sharePassword"></td></tr>';
+      html += '<tr><td></td><td><input placeholder="'+passwordPlaceholder+'" id="cat_femprocomuns_owncloud_zimlet-sharedLinkPass" type="sharePassword"></td></tr>';
 
       var expiryDateLabel = '';
-      if (tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_date'] == 'true')
+      if (cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_date'] == 'true')
       {
           expiryDateLabel = zimletInstance.getMessage('requiredExpiryDate') != '' ?
             zimletInstance.getMessage('requiredExpiryDate')
@@ -470,15 +470,15 @@ OwnCloudListView.prototype._sendFileListener = function(ev) {
       }
 
       var expiryValue = '';
-      if (tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_expiry_days'] != '')
+      if (cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_expiry_days'] != '')
       {
-          var expiryDays = tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_expiry_days'];
+          var expiryDays = cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_expiry_days'];
           expiryDays = parseInt(expiryDays,10);
           if(expiryDays >= 0)
               expiryValue = ' value="'+(new Date(Date.now() + expiryDays * 24 * 60 * 60 * 1000)).toISOString().slice(0,10)+'"';
       }
       html += '<tr><td></td><td><input placeholder="' + zimletInstance.getMessage('datePlaceholder')
-        + '" title="'+expiryDateLabel+'" id="tk_barrydegraaff_owncloud_zimlet-sharedExpiryDate" type="date" '
+        + '" title="'+expiryDateLabel+'" id="cat_femprocomuns_owncloud_zimlet-sharedExpiryDate" type="date" '
         +minDate+expiryValue+' ></td></tr></table></form>';
   }
    else
@@ -497,20 +497,20 @@ OwnCloudListView.prototype._sendFileListener = function(ev) {
 };
 
 OwnCloudListView.prototype._okSharePassListen = function(ev) {
- var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+ var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
  var ownCloudZimletShareType = document.getElementById("ownCloudZimletShareTypeSelectorPublic").checked;
- if(document.getElementById('tk_barrydegraaff_owncloud_zimlet-sharedLinkPass'))
+ if(document.getElementById('cat_femprocomuns_owncloud_zimlet-sharedLinkPass'))
  {
-    this.sharedLinkPass = document.getElementById('tk_barrydegraaff_owncloud_zimlet-sharedLinkPass').value;
+    this.sharedLinkPass = document.getElementById('cat_femprocomuns_owncloud_zimlet-sharedLinkPass').value;
  }
  else
  {
     this.sharedLinkPass = "";
  } 
 
- if(document.getElementById('tk_barrydegraaff_owncloud_zimlet-sharedExpiryDate'))
+ if(document.getElementById('cat_femprocomuns_owncloud_zimlet-sharedExpiryDate'))
  {
-    this.sharedLinkExpiryDate = document.getElementById('tk_barrydegraaff_owncloud_zimlet-sharedExpiryDate').value;
+    this.sharedLinkExpiryDate = document.getElementById('cat_femprocomuns_owncloud_zimlet-sharedExpiryDate').value;
  }
  else
  {
@@ -519,23 +519,23 @@ OwnCloudListView.prototype._okSharePassListen = function(ev) {
 
  /* validation */
  var validate = true;
- if (tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_password'] == 'true' && this.sharedLinkPass == '')
+ if (cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_password'] == 'true' && this.sharedLinkPass == '')
  {
     validate = false;
-    document.getElementById('tk_barrydegraaff_owncloud_zimlet-sharedLinkPass').style.border = '1px red solid';
+    document.getElementById('cat_femprocomuns_owncloud_zimlet-sharedLinkPass').style.border = '1px red solid';
  }
  else
  {
-    document.getElementById('tk_barrydegraaff_owncloud_zimlet-sharedLinkPass').style.border = '1px black solid';
+    document.getElementById('cat_femprocomuns_owncloud_zimlet-sharedLinkPass').style.border = '1px black solid';
  }
- if (tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_date'] == 'true' && this.sharedLinkExpiryDate == '')
+ if (cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_link_enforce_date'] == 'true' && this.sharedLinkExpiryDate == '')
  {
     validate = false;
-    document.getElementById('tk_barrydegraaff_owncloud_zimlet-sharedExpiryDate').style.border = '1px red solid';
+    document.getElementById('cat_femprocomuns_owncloud_zimlet-sharedExpiryDate').style.border = '1px red solid';
  }
  else
  {
-    document.getElementById('tk_barrydegraaff_owncloud_zimlet-sharedExpiryDate').style.border = '1px black solid';
+    document.getElementById('cat_femprocomuns_owncloud_zimlet-sharedExpiryDate').style.border = '1px black solid';
  }
  if (!validate)
      return;
@@ -588,7 +588,7 @@ OwnCloudListView.prototype._sendFileAsAttachmentListener = function(ev) {
 };
 
 OwnCloudListView.prototype._sendFilesListCbk = function(resNames, urls, idsToAttach) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
   if(this.sharedLinkPass)
   {
      var passwordText = "("+ZmMsg.password.toLowerCase()+": "+this.sharedLinkPass+")";
@@ -623,7 +623,7 @@ OwnCloudListView.prototype._sendFilesListCbk = function(resNames, urls, idsToAtt
   for (var i = 0; i < urls.length; i+= 1) {
     if(urls[i].link.match(/http:\/\/|https:\/\//i))
     {
-       if(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_template'].length > 0)
+       if(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_template'].length > 0)
        {
           extraBodyText.push((urls[i].name + " : " + urls[i].link));
        }
@@ -639,9 +639,9 @@ OwnCloudListView.prototype._sendFilesListCbk = function(resNames, urls, idsToAtt
   }  
   if((extraBodyText.length > 0) || (idsToAttach.length > 0))
   {
-    if(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_template'].length > 0)
+    if(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_template'].length > 0)
     {
-       var body = tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_template'];
+       var body = cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_template'];
        body = body.replace('{links}',extraBodyText.join("\r\n"));
        if (appCtxt.get(ZmSetting.DISPLAY_NAME))
        {
@@ -695,7 +695,7 @@ OwnCloudListView.prototype._sendFilesListCbk = function(resNames, urls, idsToAtt
 };
 
 OwnCloudListView.prototype._onItemSelected = function(ev) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
 
   //ipad menu
   if(ev.target.innerHTML=="&#9776;" || ev.target.innerHTML=="☰")
@@ -832,7 +832,7 @@ OwnCloudListView.prototype.preview = function(davResource, token) {
        break;
    }  
   
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;  
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;  
   var href = token + "&name=" + encodeURIComponent(davResource.getName()) + "&contentType=" + contentType + "&inline=true";
 
   /* OnlyOffice Integration
@@ -900,17 +900,17 @@ OwnCloudListView.prototype.preview = function(davResource, token) {
          var xhr = new XMLHttpRequest();
          var data = "filekey=" + key +
          "&path=" + encodeURIComponent(davResource.getHref()) +
-         "&owncloud_zimlet_server_path=" + encodeURIComponent(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']) +         
-         "&owncloud_zimlet_password=" + encodeURIComponent(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']) +
-         "&owncloud_zimlet_username=" + encodeURIComponent(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_username']) +
-         "&owncloud_zimlet_server_name=" + encodeURIComponent(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_name']) +
-         "&owncloud_zimlet_server_port=" + encodeURIComponent(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_port']) +
-         "&owncloud_zimlet_oc_folder=" + encodeURIComponent(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder']);
+         "&owncloud_zimlet_server_path=" + encodeURIComponent(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path']) +         
+         "&owncloud_zimlet_password=" + encodeURIComponent(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']) +
+         "&owncloud_zimlet_username=" + encodeURIComponent(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_username']) +
+         "&owncloud_zimlet_server_name=" + encodeURIComponent(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_name']) +
+         "&owncloud_zimlet_server_port=" + encodeURIComponent(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_port']) +
+         "&owncloud_zimlet_oc_folder=" + encodeURIComponent(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_oc_folder']);
          xhr.open("POST", '/service/extension/onlyoffice/', false);
          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
          
          xhr.onerror = function () {
-            var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+            var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
             zimletInstance.editenable = false;
          };
          
@@ -1029,7 +1029,7 @@ function ()
  * 
  * */
 OwnCloudListView.prototype._editFileListener = function(ev) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
   var davResource = this.getSelection()[0];
   
   if((davResource._contentType == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') ||
@@ -1059,11 +1059,11 @@ OwnCloudListView.prototype._editFileListener = function(ev) {
  * Shows file/folder properties
  * */
 OwnCloudListView.prototype._itemPropertiesListener = function(ev) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
   var davResource = this.getSelection()[0];
 
    var content = "<table>";
-   var location = "/"+(davResource.getHref()).replace(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path'], "");
+   var location = "/"+(davResource.getHref()).replace(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path'], "");
 
    content += "<tr><td style='width:100px;padding:2px'>"+ ZmMsg.path + ": </td><td style='width:550px;padding:2px'>"+location+"</td></tr>";
    content += "<tr><td style='width:100px;padding:2px'>"+ ZmMsg.type + ": </td><td style='width:550px;padding:2px'>"+davResource.getContentType()+"</td></tr>";   
@@ -1084,12 +1084,12 @@ OwnCloudListView.prototype._itemPropertiesListener = function(ev) {
 };
 
 OwnCloudListView.prototype.okbtnProperties = function(davResource) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    zimletInstance._propertiesdialog.popdown();
 };
 
 OwnCloudListView.prototype._editFileCbk = function(davResource, token) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    var href = token + "&name=" + encodeURIComponent(davResource.getName()) + "&contentType=" + davResource.getContentType();
 
    zimletInstance._editdialog = new ZmDialog( { title:ZmMsg.edit, parent:zimletInstance.getShell(), standardButtons:[DwtDialog.OK_BUTTON, DwtDialog.CANCEL_BUTTON], disposeOnPopDown:true } );
@@ -1108,14 +1108,14 @@ OwnCloudListView.prototype._editFileCbk = function(davResource, token) {
 };
 
 OwnCloudListView.prototype.okbtnEdit = function(davResource) {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;   
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;   
    var path = davResource._href.substr(0, davResource._href.lastIndexOf("/")) + "/";
    var filename = davResource._href.substr(davResource._href.lastIndexOf("/")+1);
 
    form = new FormData(),
    request = new XMLHttpRequest();
    form.append("uploadFile",new Blob([ document.getElementById('OwnCloudListViewEdit').value ]), filename);
-   form.append("password", tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']);
+   form.append("password", cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_password']);
    request.open(
    "POST",
    "/service/extension/dav_upload/?path="+path,
@@ -1156,7 +1156,7 @@ OwnCloudListView.prototype._saveFileAsPDF = function(davResource, token) {
 };   
 
 OwnCloudListView.prototype._deleteListener = function(ev) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
   var fileName = ""; 
   if(this.getSelection().length > 1)
   {
@@ -1182,7 +1182,7 @@ OwnCloudListView.prototype._deleteListener = function(ev) {
 };
 
 OwnCloudListView.prototype._deleteCallback = function(davResources) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
   zimletInstance.deleteDialog.getButton(DwtDialog.YES_BUTTON).setVisibility(false);
   zimletInstance.deleteDialog.getButton(DwtDialog.NO_BUTTON).setVisibility(false);
   zimletInstance.deleteDialog.setContent("<div id=\"ownCloudZimletUploadFilesProgress\" style=\"width:300px; text-align:center;\"><img src=\""+zimletInstance.getResource("progressround.gif")+"\"></div>");
@@ -1192,7 +1192,7 @@ OwnCloudListView.prototype._deleteCallback = function(davResources) {
 };
 
 OwnCloudListView.prototype.batchDeleter = function() {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;  
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;  
 
   //all is deleted
   if(OwnCloudListView.deleteBatch.length == 0)
@@ -1212,12 +1212,12 @@ OwnCloudListView.prototype.batchDeleter = function() {
 };
 
 OwnCloudListView.prototype.popDownDeleteDialog = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    zimletInstance.deleteDialog.popdown();
 };
 
 OwnCloudListView.prototype._moveListener = function() { 
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
 
 	var newFolderBtnId = 'ownCloudZimletNewFolderBtn';
 	var newFolderBtn = new DwtDialog_ButtonDescriptor(newFolderBtnId, ZmMsg.newFolder, DwtDialog.ALIGN_LEFT);
@@ -1256,30 +1256,30 @@ OwnCloudListView.prototype._moveListener = function() {
 };
 
 OwnCloudListView.prototype.cancelBtn = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    zimletInstance._folderPickerDialog.popdown();
 };
 
 OwnCloudListView.prototype.selectRoot = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
-   zimletInstance.OwnCloudFolderPicker.selectedDavResource = tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path'];
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
+   zimletInstance.OwnCloudFolderPicker.selectedDavResource = cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path'];
 };
 
 OwnCloudListView.prototype.displayRootSelect = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    document.getElementById('moveFolderRoot').style.minWidth = "100%";
    document.getElementById('moveFolderRoot').style.backgroundColor = "#99cae7";
    zimletInstance.OwnCloudFolderPicker._tree.deselectAll();
 };
 
 OwnCloudListView.prototype.unDisplayRootSelect = function() {
-   var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+   var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
    document.getElementById('moveFolderRoot').style.minWidth = "100%";
    document.getElementById('moveFolderRoot').style.backgroundColor = "transparent";
 };
 
 OwnCloudListView.prototype._moveCallback = function(davResources) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject; 
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject; 
   OwnCloudListView.moveBatch = davResources;
 
   var destHref = "";
@@ -1301,7 +1301,7 @@ OwnCloudListView.prototype._moveCallback = function(davResources) {
 };
 
 OwnCloudListView.prototype.batchMover = function() {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;  
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;  
 
   zimletInstance._folderPickerDialog.getButton(DwtDialog.OK_BUTTON).setVisibility(false);
   zimletInstance._folderPickerDialog.getButton(DwtDialog.CANCEL_BUTTON).setVisibility(false);
@@ -1363,7 +1363,7 @@ OwnCloudListView.prototype._renameFileListener = function() {
 };
 
 OwnCloudListView.prototype._renameFileCallback = function(file, input, dialog, ev) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;  
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;  
   var inputValue = ownCloudZimlet.prototype.sanitizeFileName(input.getValue());
   if (inputValue === file.getName()) { return; }
   dialog.getButton(DwtDialog.OK_BUTTON).setEnabled(false);
@@ -1419,7 +1419,7 @@ OwnCloudListView.prototype._renameFolderListener = function(ev) {
 };
 
 OwnCloudListView.prototype._renameFolderCallback = function(folder, input, dialog, ev) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;  
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;  
   var inputValue = ownCloudZimlet.prototype.sanitizeFileName(input.getValue());
   if (inputValue === folder.getName()) { return; }
   dialog.getButton(DwtDialog.OK_BUTTON).setEnabled(false);
@@ -1470,14 +1470,14 @@ OwnCloudListView.prototype._newFolderListener = function(ev) {
 };
 
 OwnCloudListView.prototype._newFolderCallback = function(folder, input, dialog, ev) {
-  var zimletInstance = appCtxt._zimletMgr.getZimletByName('tk_barrydegraaff_owncloud_zimlet').handlerObject;
+  var zimletInstance = appCtxt._zimletMgr.getZimletByName('cat_femprocomuns_owncloud_zimlet').handlerObject;
   var inputValue = ownCloudZimlet.prototype.sanitizeFileName(input.getValue());
   if (inputValue === folder.getName()) { return; }
   dialog.getButton(DwtDialog.OK_BUTTON).setEnabled(false);
   dialog.getButton(DwtDialog.CANCEL_BUTTON).setEnabled(false);
 
   this._davConnector.mkcol(
-    "/"+(folder.getHref() + inputValue).replace(tk_barrydegraaff_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path'], ""),
+    "/"+(folder.getHref() + inputValue).replace(cat_femprocomuns_owncloud_zimlet_HandlerObject.settings['owncloud_zimlet_server_path'], ""),
     new AjxCallback(this, function(dialog, result) {
       dialog.popdown();
       zimletInstance._appView.refreshViewPropfind();      
