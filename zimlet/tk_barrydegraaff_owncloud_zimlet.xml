@@ -25,8 +25,8 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 <zimlet name="tk_barrydegraaff_owncloud_zimlet"
         version="1.4.1"
         target="main compose-window view-window"
-        label="bDrive"
-        description="Adjunta desde y guarda a bDrive">
+        label="Oficina"
+        description="Adjunta des de i desa a Oficina">
     <include>markdown/purify.js</include>
     <include>OwnCloudFolderPicker.js</include>
     <include>DavConnector.js</include>
